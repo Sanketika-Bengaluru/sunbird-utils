@@ -86,9 +86,3 @@ After upgrade, verify:
 ## Known Issues
 
 Scala 2.11/2.13 Conflict: If you encounter NoClassDefFoundError for scala.collection classes, verify dependency tree to ensure no Scala 2.11 artifacts are present. Run mvn dependency:tree and add exclusions for any scala-library or scala-reflect with version 2.11.
-
-## Files Modified
-
-- 4 POM files
-- 29 Java source files with import changes
-- Configuration string literals updated
