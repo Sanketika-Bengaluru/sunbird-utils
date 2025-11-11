@@ -38,10 +38,36 @@
 			<artifactId>pekko-remote_${scala.binary.version}</artifactId>
 			<version>${pekko.version}</version>
 		</dependency>
+		<!-- Add scala-reflect for PowerMock compatibility -->
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-reflect</artifactId>
+			<version>2.13.12</version>
+		</dependency>
+		<!-- CRITICAL: Include COMPLETE Scala runtime to fix ClassNotFoundException -->
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
 			<version>2.13.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-compiler</artifactId>
+			<version>2.13.12</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Add missing dependencies for PowerMock + Mockito compatibility -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.8.9</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.2.4</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -187,19 +213,19 @@
 			<artifactId>httpmime</artifactId>
 			<version>4.5.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-easymock -->
+		<!-- Updated PowerMock versions for better compatibility -->
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-module-junit4</artifactId>
-			<version>1.6.5</version>
-			<!--<scope>test</scope> -->
+			<version>1.7.4</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-mockito</artifactId>
-			<version>1.6.5</version>
-			<!--<scope>test</scope> -->
+			<version>1.7.4</version>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
@@ -221,8 +247,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.sunbird</groupId>
-			<artifactId>cloud-store-sdk</artifactId>
-			<version>1.2.6</version>
+            <artifactId>cloud-store-sdk_2.13</artifactId>
+            <version>1.4.8</version>
 			<exclusions>
 				<exclusion>
                                         <groupId>com.sun.jersey</groupId>
@@ -250,6 +276,7 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-scala_${scala.binary.version}</artifactId>
             <version>2.14.3</version>
+            <scope>test</scope>
         </dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
